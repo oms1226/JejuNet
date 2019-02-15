@@ -50,11 +50,12 @@ public class SegmentorActivity extends CameraActivity implements OnImageAvailabl
   private static final Logger LOGGER = new Logger();
 
   // Configuration values for the prepackaged DeepLab model.
-  private static final int TF_OD_API_INPUT_WIDTH = 256;
-  private static final int TF_OD_API_INPUT_HEIGHT = 256;
+  private static final int TF_OD_API_INPUT_WIDTH = 513;
+  private static final int TF_OD_API_INPUT_HEIGHT = 513;
   private static final int TF_OD_API_NUM_CLASS = 21;
   private static final int TF_OD_API_NUM_OUTPUT = 1;
-  private static final String TF_OD_API_MODEL_FILE = "mobilenet_v2_deeplab_v3_256_myquant.tflite";
+//  private static final String TF_OD_API_MODEL_FILE = "mobilenet_v2_deeplab_v3_256_myquant.tflite";
+  private static final String TF_OD_API_MODEL_FILE = "frozen_inference_graph.tflite";
   private static final String TF_OD_API_LABELS_FILE = "file:///android_asset/pascal_voc_labels_list.txt";
 
   private enum segmentorMode {

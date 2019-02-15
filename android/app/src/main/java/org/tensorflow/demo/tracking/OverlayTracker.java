@@ -39,7 +39,7 @@ public class OverlayTracker {
   private Size previewSize;
 
   private int colors[];
-  private long[] resultPixels;
+  private byte[] resultPixels;
   private int[] pixels;
   private Vector<String> lastLabels;
   private Vector<String> labels;
