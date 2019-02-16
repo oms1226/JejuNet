@@ -31,7 +31,7 @@ public interface Segmentor {
          * A unique identifier for what has been recognized. Specific to the class, not the instance of
          * the object.
          */
-        private final byte[] pixels;
+        private final byte[][] pixels;
         private final int numClass;
         private final int width;
         private final int height;
@@ -39,7 +39,7 @@ public interface Segmentor {
         private final long nativeTime;
 
         public Segmentation(
-                final byte[] pixels2,
+                final byte[][] pixels2,
                 final int numClass,
                 final int width, final int height, final long inferenceTime, final long nativeTime) {
             this.pixels = pixels2;
@@ -50,7 +50,7 @@ public interface Segmentor {
             this.nativeTime = nativeTime;
         }
 
-        public byte[] getPixels() { return pixels; }
+        public byte[][] getPixels() { return pixels; }
 
         public int getWidth() {
             return width;

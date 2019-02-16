@@ -106,7 +106,7 @@ public class TFLiteObjectSegmentationAPIModel implements Segmentor {
     d.imgData = ByteBuffer.allocateDirect(d.inputWidth*d.inputHeight*3);
     d.imgData.order(ByteOrder.nativeOrder());
     d.intValues = new int[d.inputWidth * d.inputHeight];
-    d.pixelClasses = new byte[1][d.inputHeight*d.inputWidth*numOutput];
+    d.pixelClasses = new byte[d.inputHeight][d.inputWidth*numOutput];
     return d;
   }
 
@@ -140,14 +140,14 @@ public class TFLiteObjectSegmentationAPIModel implements Segmentor {
     // Run the inference call.
     Trace.beginSection("run");
     long startTime = SystemClock.uptimeMillis();
-    tfLite.run(imgData, new byte[inputHeight][inputWidth]);
+    tfLite.run(imgData, pixelClasses);
     long endTime = SystemClock.uptimeMillis();
     Trace.endSection(); // run
 
     Trace.endSection(); // segmentImage
 
     return new Segmentation(
-                pixelClasses[0],
+                pixelClasses,
                 numClass,
                 inputWidth, inputHeight, endTime - startTime,
             tfLite.getLastNativeInferenceDurationNanoseconds() / 1000 / 1000);

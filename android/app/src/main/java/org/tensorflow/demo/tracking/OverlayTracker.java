@@ -39,7 +39,7 @@ public class OverlayTracker {
   private Size previewSize;
 
   private int colors[];
-  private byte[] resultPixels;
+  private byte[][] resultPixels;
   private int[] pixels;
   private Vector<String> lastLabels;
   private Vector<String> labels;
@@ -116,7 +116,7 @@ public class OverlayTracker {
     int[] visitedLabels = new int[numClass];
     for(int i = 0; i < width; i++) {
       for(int j = 0; j < height; j++) {
-        int classNo = (int)resultPixels[j*height+i]; // very tricky part
+        int classNo = (int)resultPixels[i][j]; // very tricky part
         pixels[j*bmp.getWidth()+i] = colors[classNo];
         visitedLabels[classNo] = 1;
       }
